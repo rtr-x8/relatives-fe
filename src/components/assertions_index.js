@@ -28,16 +28,22 @@ export default class AssertionsIndex extends React.Component {
   }
 
   renderCard() {
-    //
+    return _.map(this.state.assertions, assertion => (
+      <p key={assertion.id}>
+        <b>{assertion.id}</b>
+        <span> | </span>
+        <span>{assertion.body}</span>
+        <span> | </span>
+        <span>{assertion.created_at}</span>
+      </p>
+    ));
   }
 
   render(h) {
     return (
-      <ul>
-        <li>
+      <div>
           {this.renderCard()}
-        </li>
-      </ul>
+      </div>
     );
   };
 }
