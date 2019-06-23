@@ -29,21 +29,20 @@ export default class AssertionsIndex extends React.Component {
 
   renderCard() {
     return _.map(this.state.assertions, assertion => (
-      <p key={assertion.id}>
-        <b>{assertion.id}</b>
-        <span> | </span>
-        <span>{assertion.body}</span>
-        <span> | </span>
-        <span>{assertion.created_at}</span>
-      </p>
+      <tr key={assertion.id}>
+        <th>{assertion.id}</th>
+        <td>{assertion.body}</td>
+        <td>{assertion.created_at}</td>
+        <td>{assertion.user.name}</td>
+      </tr>
     ));
   }
 
   render(h) {
     return (
-      <div>
-          {this.renderCard()}
-      </div>
+      <table><tbody>
+        {this.renderCard()}
+      </tbody></table>
     );
   };
 }
