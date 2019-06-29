@@ -44,9 +44,11 @@ export default class AssertionsIndex extends React.Component {
 
   render(h) {
     return (
+      <div style={{ padding: "20px" }}>
       <Grid container spacing={3}>
         {this.renderCard()}
       </Grid>
+      </div>
     );
   };
 }
