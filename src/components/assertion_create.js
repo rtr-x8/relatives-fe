@@ -13,7 +13,7 @@ export default class AssertionCreate extends React.Component {
   }
   render(h) {
     return (
-      <form noValidate autoComplete="off">
+      <form noValidate autoComplete="off" onSubmit={() => this.onSubmit}>
         <TextField
           id="outlined-dense-multiline"
           label="Body"
@@ -21,6 +21,7 @@ export default class AssertionCreate extends React.Component {
           variant="outlined"
           multiline
           rowsMax="4"
+          fullWidth={true}
         />
       </form>
     )
