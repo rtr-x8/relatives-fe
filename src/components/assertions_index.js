@@ -3,6 +3,9 @@ import axios from 'axios'
 import _ from 'lodash'
 import AssertionCard from './assertion_card'
 import Grid from '@material-ui/core/Grid';
+import AddIcon from '@material-ui/icons/Add';
+import Fab from '@material-ui/core/Fab';
+import { Link } from "react-router-dom";
 
 const api_server = process.env.REACT_APP_BACKEND_SERVER;
 
@@ -45,6 +48,20 @@ export default class AssertionsIndex extends React.Component {
   render(h) {
     return (
       <div style={{ padding: "20px" }}>
+        <Fab
+          color="primary"
+          aria-label="Add"
+          style={{
+            position: "fixed",
+            bottom: "10px",
+            left: "50%",
+            marginLeft: "-26px"
+          }}
+          component={Link}
+          to="/create"
+        >
+          <AddIcon />
+        </Fab>
         <Grid container spacing={3}>
           {this.renderCard()}
         </Grid>
