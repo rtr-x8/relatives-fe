@@ -1,12 +1,15 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
-import App from './App';
 import * as serviceWorker from './serviceWorker';
 import { createMuiTheme } from '@material-ui/core/styles';
 import { ThemeProvider } from '@material-ui/styles';
 import { purple } from '@material-ui/core/colors';
-import { BrowserRouter as Router, Route, Link } from "react-router-dom";
+import { BrowserRouter as Router, Route } from "react-router-dom";
+
+// Components
+import AssertionsIndex from './components/assertions_index';
+import AssertionCreate from './components/assertion_create'
 
 const theme = createMuiTheme({
   palette: {
@@ -18,7 +21,8 @@ const theme = createMuiTheme({
 ReactDOM.render(
   <ThemeProvider theme={theme}>
     <Router>
-      <App />
+      <Route path="/" exact component={AssertionsIndex} />
+      <Route path="/create/" exact component={AssertionCreate} />
     </Router>
   </ThemeProvider>,
   document.getElementById('root')
