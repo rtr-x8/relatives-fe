@@ -8,10 +8,11 @@ import KeyboardBackspace from '@material-ui/icons/KeyboardBackspace';
 import axios from 'axios';
 import FormHelperText from '@material-ui/core/FormHelperText';
 import FormControl from '@material-ui/core/FormControl';
+import { withRouter } from 'react-router';
 
 const api_server = process.env.REACT_APP_BACKEND_SERVER;
 
-export default class AssertionCreate extends React.Component {
+class AssertionCreate extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
@@ -45,6 +46,7 @@ export default class AssertionCreate extends React.Component {
     })
     .then(res => {
       console.log(res.data)
+      this.props.history.push('/')
     })
     .catch(error => {
       // console.log(error.response.status)
@@ -122,3 +124,5 @@ export default class AssertionCreate extends React.Component {
     )
   }
 }
+
+export default withRouter(AssertionCreate);
