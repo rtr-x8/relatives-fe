@@ -1,22 +1,26 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
-import App from './App';
 import * as serviceWorker from './serviceWorker';
 import { createMuiTheme } from '@material-ui/core/styles';
 import { ThemeProvider } from '@material-ui/styles';
-import { purple } from '@material-ui/core/colors';
+// import { purple } from '@material-ui/core/colors';
+import { BrowserRouter as Router, Route } from "react-router-dom";
+
+// Components
+import AssertionsIndex from './components/assertions_index';
+import AssertionCreate from './components/assertion_create'
 
 const theme = createMuiTheme({
-  palette: {
-    primary: { main: purple[500] }, // Purple and green play nicely together.
-    secondary: { main: '#11cb5f' }, // This is just green.A700 as hex.
-  },
+  //
 });
 
 ReactDOM.render(
   <ThemeProvider theme={theme}>
-    <App />
+    <Router>
+      <Route path="/" exact component={AssertionsIndex} />
+      <Route path="/create/" exact component={AssertionCreate} />
+    </Router>
   </ThemeProvider>,
   document.getElementById('root')
 );
