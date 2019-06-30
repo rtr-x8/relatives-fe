@@ -5,7 +5,9 @@ import Toolbar from '@material-ui/core/Toolbar';
 import IconButton from '@material-ui/core/IconButton';
 import MenuIcon from '@material-ui/icons/Menu';
 import KeyboardBackspace from '@material-ui/icons/KeyboardBackspace';
-import axios from 'axios'
+import axios from 'axios';
+import FormHelperText from '@material-ui/core/FormHelperText';
+import FormControl from '@material-ui/core/FormControl';
 
 const api_server = process.env.REACT_APP_BACKEND_SERVER;
 
@@ -67,14 +69,24 @@ export default class AssertionCreate extends React.Component {
     return (
       <React.Fragment>
         <form noValidate autoComplete="off" onSubmit={() => this.onSubmit}>
-          <TextField
-            label="Title"
-            name="title"
-            margin="dense"
-            error={this.state.valid.title}
-            fullWidth={true}
-            onChange={(event) => this.handleInput(event)}
-          />
+          <FormControl fullWidth={true}>
+            <TextField
+              label="Title"
+              name="title"
+              margin="dense"
+              error={this.state.valid.title}
+              onChange={(event) => this.handleInput(event)}
+            />
+            {
+              this.state.valid.title &&
+              this.state.validMessages.title.length &&
+              this.state.validMessages.title.map((txt, i) => (
+                <FormHelperText key={i} error>
+                  {txt}
+                </FormHelperText>
+              ))
+            }
+          </FormControl>
           <TextField
             label="Body"
             name="body"
