@@ -24,12 +24,15 @@ export default class AssertionCreate extends React.Component {
       valid: {
         title: false,
         body: false,
-      }
+      },
+      sending: false,
     }
     this.back = this.back.bind(this);
   }
 
   back() {
+    if(this.state.sending) return;
+    this.setState({ sending: true });
     this.setState({
       valid: {title: false, body: false},
       validMessages: {title: false, body: false}
@@ -44,8 +47,8 @@ export default class AssertionCreate extends React.Component {
       console.log(res.data)
     })
     .catch(error => {
-      console.log(error.response.status)
-      console.log(error.response.data.errors)
+      // console.log(error.response.status)
+      // console.log(error.response.data.errors)
       let errorsObj = error.response.data.errors;
       Object.keys(errorsObj).forEach(name => {
         this.setState({
@@ -60,6 +63,7 @@ export default class AssertionCreate extends React.Component {
     })
     .then(() => {
       console.log("test")
+      this.setState({ sending: false });
     })
   }
 
