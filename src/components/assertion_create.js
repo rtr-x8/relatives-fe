@@ -30,7 +30,11 @@ export default class AssertionCreate extends React.Component {
   }
 
   back() {
-    console.log(this.state.title)
+    this.setState({
+      valid: {title: false, body: false},
+      validMessages: {title: false, body: false}
+    });
+
     axios
     .post(api_server + "/v1/assertions", {
       title: this.state.title,
@@ -105,7 +109,7 @@ export default class AssertionCreate extends React.Component {
             <div style={{
               flexGrow: 1,
             }} />
-            <IconButton edge="end" color="inherit" aria-label="Open drawer">
+            <IconButton edge="end" color="inherit" aria-label="Open settings">
               <MenuIcon />
             </IconButton>
           </Toolbar>
